@@ -1,0 +1,1 @@
+,[p=[p=cord q=prom r=cord] q=(list cord) r=(list ?(tank [%stem p=tank q=tank]))]

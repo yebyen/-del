@@ -1,0 +1,19 @@
+::
+::::  /hoon/core/json/mar
+  ::
+/?  314
+  ::
+::::  compute
+  ::
+|_  jon=json
+::
+++  grow                                                ::  convert to
+  |%
+  ++  mime                                              ::  convert to %mime
+    =+  htm=(crip (pojo jon))
+    [/text/html (taco htm)]
+  --
+++  grab  |%                                            ::  convert from
+          ++  noun  json                                ::  clam from %noun
+--        --
+

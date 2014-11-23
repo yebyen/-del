@@ -1,0 +1,12 @@
+::
+::::  /hoon/core/zing/mar
+  ::
+/?  314
+/-  zing
+|_  zig=zing
+::
+++  grab
+  |%
+  ++  noun  zing                                        ::  clam from %noun
+  --
+--

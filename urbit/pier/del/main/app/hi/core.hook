@@ -1,0 +1,49 @@
+::  Hi
+::
+::::  /hook/gate/hi/bin
+  ::
+|%
+++  sign                                                ::
+  $%  $:  %g                                            ::
+  $%  [%nice ~]                                         ::
+      [%mean p=ares]                                    ::
+  ==  ==  ==
+++  flog                                                ::  sent to %dill
+          $%  [%crud p=@tas q=(list tank)]              ::
+              [%text p=tape]                            ::
+          ==                                            ::
+--
+::
+!:
+|_  [hid=hide ~]
+++  poke-hi-args
+  |=  [ost=bone you=ship her=ship mes=?(~ [tex=tape ~])]
+  :_  +>.$
+  =+  mez=[%txt !>(?~(mes '' (crip tex.mes)))]
+  :~  [ost %pass /hi/(scot %p her) %g %mess [her /hi] you mez]
+      [ost %give %nice ~]
+  ==
+::
+++  poke-txt
+  |=  [ost=bone him=ship cor=@t]
+  :_  +>.$
+  :~  [ost %pass /di %d %flog %text "< {<him>}: {(trip cor)}"]
+      [ost %give %nice ~]
+  ==
+::
+++  pour
+  |=  [ost=bone pax=path sih=sign]
+  ?>  ?=([%hi @t ~] pax)
+  :_  +>.$
+  %+  turn  (~(tap by sup.hid))
+  |=  [ost=bone *]
+  :^  ost  %give  %rush
+  :-  %tang  :_  ~  
+  ?:  ?=(%nice +<.sih)
+    leaf/"hi {(trip i.t.pax)} successful"
+  leaf/"hi {(trip i.t.pax)} unsuccessful"
+++  peer
+  |=
+    *
+  `+>
+--
