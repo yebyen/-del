@@ -47,6 +47,7 @@
       [%sire p=term q=span]                             ::
       [%mess p=hapt q=ship r=cage]                      ::
       [%meta p=vase]                                    ::
+      [%nuke p=hapt q=ship]                             ::
   ==  ==  ==                                            ::
 ++  mand  ,[p=term q=(list twig)]                       ::  name and arguments
 ++  coma                                                ::
@@ -202,17 +203,18 @@
         %&
       =+  cil=(scot %ud p.poc)
       =+  cin=(trip (~(got by cub.hid) cil))
-      %+  blab
-        [ost %pass /child/[cil]/fork %g %cide cil]
+      %-  blab
+      %+  welp
+        (kill cil)
       (print leaf/"- :{cin}({(trip cil)})")
     ::
         %|
       =+  ^-  moz=(list move)
-          %+  murn  (~(tap by cub.hid))
+          %-  zing
+          %+  turn  (~(tap by cub.hid))
           |=  [a=span b=term]
           ?.  =(b p.poc)  ~
-          %-  some
-          [ost %pass /child/[a]/fork %g %cide a]
+          (kill a)
       %-  blab  %+  welp  moz
       (print leaf/"-{<(lent moz)>} :{(trip p.poc)}")
     ==
@@ -304,6 +306,13 @@
     |=  [[n=term v=vase] q=vase]
     (slop [[%face n p.v] q.v] q)
   ::
+  ++  kill
+    |=  cil=span
+    ^-  (list move)
+    :~  [ost %pass /child/[cil]/fork %g %cide cil]
+        ::[ost %pass /child/[cil]/out %g %nuke [our.hid cil imp.hid] our.hid]
+    ==
+  ::
   ++  next-act                                          ::  rotate active task
     =+  opt=[i=`(unit span)`~ t=(turn cubs |=(a=span `(unit span)`[~ a]))]
     |-
@@ -340,12 +349,12 @@
               [ost %give %logo ~]
             ~
           (eat-end(act next-act) %& (slav %ud u.act))
-      %x  =.  act  next-act
-          (blab [ost %give %nice ~] ping)
-      %l  =+  =-  tak=rose/[" " "[" "]"]^(turn cubs -)
+      %g  =+  =-  tak=rose/[" " "[" "]"]^(turn cubs -)
               |=  a=span
               leaf/(trip (rap 3 (~(got by cub.hid) a) '(' a ')' ~))
           (blab [ost give/nice/~] (print tak))
+      %x  =.  act  next-act
+          (blab [ost %give %nice ~] ping)
     ==
   ::
   ++  poke-txt                                            ::  handle command
