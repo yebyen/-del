@@ -9471,13 +9471,13 @@
 ++  doss                                          
   $:  sap=@ud                                           ::  sample count
       hit=(map term ,@ud)                               ::  hit points
-      cut=(map span hump)                               ::  cut points
+      cut=(map path hump)                               ::  cut points
   ==
 ::
 ++  hump
   $:  sap=@ud                                           ::  sample count
-      inn=(map span ,@ud)                               ::  calls into
-      out=(map span ,@ud)                               ::  calls out of
+      inn=(map path ,@ud)                               ::  calls into
+      out=(map path ,@ud)                               ::  calls out of
   ==
 ::
 ++  pi-heck
@@ -9487,18 +9487,18 @@
     day(hit (~(put by hit.day) nam ?~(lam 1 +(u.lam))))
 ::
 ++  pi-noon                                             ::  sample trace
-  |=  [pax=path day=doss]
-  =|  lax=(unit span)
+  |=  [paz=(list path) day=doss]
+  =|  lax=(unit path)
   |-  ^-  doss
-  ?~  pax  day(sap +(sap.day))
+  ?~  paz  day(sap +(sap.day))
   %=    $
-      pax  t.pax
-      lax  `i.pax
+      paz  t.paz
+      lax  `i.paz
       cut.day
-    %+  ~(put by cut.day)  i.pax
+    %+  ~(put by cut.day)  i.paz
     ^-  hump
-    =+  nax=`(unit span)`?~(t.pax ~ `i.t.pax)
-    =+  hup=`hump`=+(hup=(~(get by cut.day) i.pax) ?^(hup u.hup [0 ~ ~]))
+    =+  nax=`(unit path)`?~(t.paz ~ `i.t.paz)
+    =+  hup=`hump`=+(hup=(~(get by cut.day) i.paz) ?^(hup u.hup [0 ~ ~]))
     :+  +(sap.hup)
       ?~  lax  inn.hup 
       =+  hag=(~(get by inn.hup) u.lax) 
@@ -9523,26 +9523,30 @@
     %-  zing
     ^-  (list (list tape))
     %+  turn
-      (~(tap by cut.day) ~)
-    |=  [nam=term hup=hump]
+      %+  sort  (~(tap by cut.day))
+      |=  [one=(pair path hump) two=(pair path hump)]
+      (gth sap.q.one sap.q.two)
+    |=  [pax=path hup=hump]
     ;:  welp
-      [(welp "sector: " (trip nam)) ~]
+      [(welp "label: " (spud pax)) ~]
       [(welp "weight: " (scow %ud (div (mul 1.000 sap.hup) sap.day))) ~]
-      ["inn:" ~]
+      ["from:" ~]
     ::
       %+  turn
         (~(tap by inn.hup) ~)
-      |=  [nam=term num=@ud]
+      |=  [pax=path num=@ud]
       ^-  tape
-      :(welp "  " (trip nam) ": " (scow %ud num))
+      :(welp "  " (spud pax) ": " (scow %ud num))
     ::
-      ["out:" ~]
+      ["into:" ~]
     ::
       %+  turn
         (~(tap by out.hup) ~)
-      |=  [nam=term num=@ud]
+      |=  [pax=path num=@ud]
       ^-  tape
-      :(welp "  " (trip nam) ": " (scow %ud num))
+      :(welp "  " (spud pax) ": " (scow %ud num))
+    ::
+      ~
     ==
   ==
 --
