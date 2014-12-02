@@ -10,7 +10,8 @@
 ++  grow                                                ::  convert to
   |%
   ++  mime                                              ::  convert to %mime
-    [/text/json (taco (crip (pojo jon)))]
+    =+  htm=(crip (pojo jon))
+    [/text/html (taco htm)]
   --
 ++  grab  |%                                            ::  convert from
           ++  noun  json                                ::  clam from %noun

@@ -465,6 +465,7 @@
             %gone  !!
             %init  !!
             %logo  !!
+            %logo  !!
             %mean  [%pass [%r pax] (rod %e p.+.sih)]
             %nice  [%give %nice ~]
             %rush  [%pass [%r pax] (rod %d p.+.sih q.+.sih)]
