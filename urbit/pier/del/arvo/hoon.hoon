@@ -1946,7 +1946,6 @@
     $(b [n.b l.b $(b r.b, a [n.a ~ r.a])], a l.a)
   ::
   +-  wyt                                               ::  size of set
-    .+
     |-  ^-  @
     ?~(a 0 +((add $(a l.a) $(a r.a))))
   --
@@ -2184,7 +2183,6 @@
     [n=[p=p.n.a q=(b p.n.a q.n.a)] l=$(a l.a) r=$(a r.a)]
   ::
   +-  wyt                                               ::  depth of map
-    .+
     |-  ^-  @
     ?~(a 0 +((add $(a l.a) $(a r.a))))
   --
@@ -2239,6 +2237,7 @@
   ::
   +-  tap                                               ::  adds list to end
     |=  b=(list ,_?>(?=(^ a) n.a))
+    =+  z=0                                             ::  XX breaks jet match
     ^+  b
     ?~  a
       b
@@ -7266,7 +7265,7 @@
       ?^  hey
         [dex [%stop u.hey]]
       ?:  (~(has in gil) sut)
-        =+  dyr=~(wyt by p.dex)
+        =+  dyr=+(~(wyt by p.dex))
         [[(~(put by p.dex) sut dyr) q.dex] [%stop dyr]]
       =+  rom=$(gil (~(put in gil) sut), sut repo)
       =+  rey=(~(get by p.p.rom) sut)
@@ -9469,15 +9468,22 @@
 ::::::  ::::::    profiling support; move me            ::::::
 ::::::  ::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ++  doss                                          
-  $:  sap=@ud                                           ::  sample count
+  $:  mon=moan                                          ::  sample count
       hit=(map term ,@ud)                               ::  hit points
-      cut=(map span hump)                               ::  cut points
+      cut=(map path hump)                               ::  cut points
   ==
+++  moan                                                ::  sample metric
+  $:  fun=@ud                                           ::  samples in C
+      noc=@ud                                           ::  samples in nock
+      glu=@ud                                           ::  samples in glue
+      mal=@ud                                           ::  samples in alloc
+      far=@ud                                           ::  samples in frag
+  ==                                                    ::
 ::
 ++  hump
-  $:  sap=@ud                                           ::  sample count
-      inn=(map span ,@ud)                               ::  calls into
-      out=(map span ,@ud)                               ::  calls out of
+  $:  mon=moan                                          ::  sample count
+      out=(map path ,@ud)                               ::  calls out of
+      inn=(map path ,@ud)                               ::  calls into
   ==
 ::
 ++  pi-heck
@@ -9487,32 +9493,70 @@
     day(hit (~(put by hit.day) nam ?~(lam 1 +(u.lam))))
 ::
 ++  pi-noon                                             ::  sample trace
-  |=  [pax=path day=doss]
-  =|  lax=(unit span)
+  |=  [mot=term paz=(list path) day=doss]
+  =|  lax=(unit path)
   |-  ^-  doss
-  ?~  pax  day(sap +(sap.day))
+  ?~  paz  day(mon (pi-mope mot mon.day))
   %=    $
-      pax  t.pax
-      lax  `i.pax
+      paz  t.paz
+      lax  `i.paz
       cut.day
-    %+  ~(put by cut.day)  i.pax
+    %+  ~(put by cut.day)  i.paz
     ^-  hump
-    =+  nax=`(unit span)`?~(t.pax ~ `i.t.pax)
-    =+  hup=`hump`=+(hup=(~(get by cut.day) i.pax) ?^(hup u.hup [0 ~ ~]))
-    :+  +(sap.hup)
-      ?~  lax  inn.hup 
-      =+  hag=(~(get by inn.hup) u.lax) 
-      (~(put by inn.hup) u.lax ?~(hag 1 +(u.hag)))
-    ?~  nax  out.hup 
-    =+  hag=(~(get by out.hup) u.nax) 
-    (~(put by out.hup) u.nax ?~(hag 1 +(u.hag)))
+    =+  nax=`(unit path)`?~(t.paz ~ `i.t.paz)
+    =+  hup=`hump`=+(hup=(~(get by cut.day) i.paz) ?^(hup u.hup [*moan ~ ~]))
+    :+  (pi-mope mot mon.hup)
+      ?~  lax  out.hup 
+      =+  hag=(~(get by out.hup) u.lax) 
+      (~(put by out.hup) u.lax ?~(hag 1 +(u.hag)))
+    ?~  nax  inn.hup 
+    =+  hag=(~(get by inn.hup) u.nax) 
+    (~(put by inn.hup) u.nax ?~(hag 1 +(u.hag)))
+  ==
+++  pi-mope                                             ::  add sample
+  |=  [mot=term mon=moan]
+  ?+  mot  mon
+    %fun  mon(fun +(fun.mon))
+    %noc  mon(noc +(noc.mon))
+    %glu  mon(glu +(glu.mon))
+    %mal  mon(mal +(mal.mon))
+    %far  mon(far +(far.mon))
+  ==
+++  pi-moth                                             ::  count sample
+  |=  mon=moan  ^-  @ud
+  :(add fun.mon noc.mon glu.mon mal.mon far.mon)
+::
+++  pi-mumm                                             ::  print sample
+  |=  mon=moan  ^-  tape
+  =+  tot=(pi-moth mon)
+  ;:  welp
+    ^-  tape
+    ?:  =(0 noc.mon)  ~
+    (welp (scow %ud (div (mul 100 noc.mon) tot)) "n ")
+  ::
+    ^-  tape
+    ?:  =(0 fun.mon)  ~
+    (welp (scow %ud (div (mul 100 fun.mon) tot)) "c ")
+  ::
+    ^-  tape
+    ?:  =(0 glu.mon)  ~
+    (welp (scow %ud (div (mul 100 glu.mon) tot)) "g ")
+  ::
+    ^-  tape
+    ?:  =(0 mal.mon)  ~
+    (welp (scow %ud (div (mul 100 mal.mon) tot)) "m ")
+  ::
+    ^-  tape
+    ?:  =(0 far.mon)  ~
+    (welp (scow %ud (div (mul 100 far.mon) tot)) "f ")
   ==
 ::
 ++  pi-tell                                             ::  produce dump
   |=  day=doss
   ^-  (list tape)
+  =+  tot=(pi-moth mon.day)
   ;:  welp
-    [(welp "events: " (scow %ud sap.day)) ~]
+    [(welp "events: " (pi-mumm mon.day)) ~]
   ::
     %+  turn
       (~(tap by hit.day) ~)
@@ -9523,32 +9567,41 @@
     %-  zing
     ^-  (list (list tape))
     %+  turn
-      (~(tap by cut.day) ~)
-    |=  [nam=term hup=hump]
+      %+  sort  (~(tap by cut.day))
+      |=  [one=(pair path hump) two=(pair path hump)]
+      (gth (pi-moth mon.q.one) (pi-moth mon.q.two))
+    |=  [pax=path hup=hump]
+    =+  ott=(pi-moth mon.hup)
     ;:  welp
-      [(welp "sector: " (trip nam)) ~]
-      [(welp "weight: " (scow %ud (div (mul 1.000 sap.hup) sap.day))) ~]
-      ["inn:" ~]
+      [(welp "label: " (spud pax)) ~]
+      [(welp "price: " (scow %ud (div (mul 100 ott) tot))) ~]
+      [(welp "shape: " (pi-mumm mon.hup)) ~]
     ::
-      %+  turn
-        (~(tap by inn.hup) ~)
-      |=  [nam=term num=@ud]
-      ^-  tape
-      :(welp "  " (trip nam) ": " (scow %ud num))
-    ::
-      ["out:" ~]
-    ::
+      ?:  =(~ out.hup)  ~
+      :-  "into:"
       %+  turn
         (~(tap by out.hup) ~)
-      |=  [nam=term num=@ud]
+      |=  [pax=path num=@ud]
       ^-  tape
-      :(welp "  " (trip nam) ": " (scow %ud num))
+      :(welp "  " (spud pax) ": " (scow %ud num))
+    ::
+      ?:  =(~ inn.hup)  ~
+      :-  "from:"
+      %+  turn
+        (~(tap by inn.hup) ~)
+      |=  [pax=path num=@ud]
+      ^-  tape
+      :(welp "  " (spud pax) ": " (scow %ud num))
+    ::
+      ["" ~]
+      ~
     ==
   ==
 --
 ::::::  ::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::::::  ::::::    volume 3, Arvo models and skeleton    ::::::
 ::::::  ::::::::::::::::::::::::::::::::::::::::::::::::::::::
+~%  %arvo  +  ~
 |%
 ++  arch  ,[p=@uvI q=(unit ,@uvI) r=(map ,@ta ,~)]      ::  fundamental node
 ++  arvo  (mold ,[p=term q=mill] mill)                  ::  arvo card
@@ -9657,6 +9710,7 @@
 ::
 ++  vent  !:                                            ::  vane core 
   |=  [lal=@tas vil=vile bud=vase ves=vase]
+  ~%  %vent  +>+  ~
   |%
   ++  ruck                                              ::  update vase
     |=  [pax=path txt=@ta]
@@ -9670,6 +9724,7 @@
   ++  wink                                              ::  deploy
     |=  [now=@da eny=@ ski=sled]
     =+  rig=(slym ves +<)                               ::  activate vane
+    ~%  %wink  +>+>  ~
     |%
     ++  doze
       |=  [now=@da hen=duct]
@@ -9677,6 +9732,7 @@
       ((hard (unit ,@da)) q:(slym (slap rig [%cnzy %doze]) +<))
     ::
     ++  sike                                            ::  check metatype
+      ~/  %sike
       |=  [sub=type ref=*]
       ^-  ?
       ::  ?:  =(~ ~)  &
@@ -9709,6 +9765,7 @@
       `(slym gat +>.hil)
     ::
     ++  souk                                            ::  check type
+      ~/  %souk
       |=  [sub=type ref=type]
       ::  ?:  =(~ ~)  &
       (~(nest ut sub) | ref)
@@ -9719,6 +9776,7 @@
       (souk [%cell %noun %noun] ref)
     ::
     ++  song                                            ::  reduce metacard
+      ~/  %song                                         ::
       |=  mex=vase                                      ::  mex: vase of card
       ^-  (unit mill)                                   ::
       ?.  (sunk p.mex)  ~                               ::  a card is a cell
@@ -9734,6 +9792,7 @@
       $(mut +.q.mut)                                    ::  descend into meta
     ::
     ++  sump                                            ::  vase to move
+      ~/  %sump
       |=  wec=vase
       ^-  (unit move)
       %+  biff  ((soft duct) -.q.wec)
@@ -9787,6 +9846,7 @@
       [(need (sump (slot 2 vud))) $(vud (slot 3 vud))]
     ::
     ++  scry                                            ::  read namespace
+      ~/  %scry
       |=  $:  fur=(unit (set monk))
               ren=care
               bed=beam
@@ -9816,6 +9876,7 @@
       sev(+<.q [*@da *@ =>(~ |+(* ~))])                 ::  clear to stop leak
     ::
     ++  swim
+      ~/  %swim
       |=  $:  org=@tas
               pux=(unit wire)
               hen=duct

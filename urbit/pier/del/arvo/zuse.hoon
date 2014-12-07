@@ -1,11 +1,18 @@
 ::
 ::  zuse (3), standard library (tang)   
 ::
+~%  %zuse  +  ~
 |%
   ::::::::::::::::::::::::::::::::::::::::::::::::::::::  ::
 ::::              chapter 3b, Arvo libraries            ::::
 ::  ::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                section 3bA, lite number theory       ::
+::
+++  dope
+  ~/  %dope
+  |=  a=@
+  ~&  [%dope-zuse (mug +>)]
+  :(mul a a a)
 ::
 ++  fu                                                  ::  modulo (mul p q)
   |=  a=[p=@ q=@]
@@ -619,13 +626,16 @@
     =+  man=`mane`n.g.mex
     =.  unq  |(unq =(%script man) =(%style man))
     =+  tam=(name man)
-    =.  rez  :(weld "</" tam ">" rez)
     =+  att=`mart`a.g.mex
     :-  '<'
     %+  welp  tam
-    =.  rez  ['>' (many c.mex rez)]
-    ?~(att rez [' ' (attr att rez)])
-  ::
+    =-  ?~(att rez [' ' (attr att rez)])
+    ^-  rez=tape
+    ::?~  c.mex
+    ::  [' ' '/' '>' rez]
+    :-  '>'
+    (many c.mex :(weld "</" tam ">" rez))
+  ::  ::
   ++  attr                                              ::  attributes to tape
     |=  [tat=mart rez=tape]
     ^-  tape
@@ -677,10 +687,10 @@
     %+  ifix  [(star spa) (star spa)]
     ;~  pose
       %+  sear  |=([a=marx b=marl c=mane] ?.(=(c n.a) ~ (some [a b])))
-        ;~(plug head (more (star comt) ;~(pose apex chrd)) tail)
+        ;~(plug head many tail)
       empt
     == 
-  :: 
+  ::
   ++  attr                                              ::  attributes
     %+  knee  *mart  |.  ~+ 
     %-  star
@@ -721,6 +731,9 @@
   ::
   ++  head                                              ::  opening tag
     (ifix [gal gar] ;~(plug name attr))
+  ::
+  ++  many
+    (more (star comt) ;~(pose apex chrd))
   ::
   ++  name                                              ::  tag name 
     =+  ^=  chx

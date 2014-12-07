@@ -395,7 +395,9 @@
   ^-  [(list move) _..^$]
   ?+    -.sih  !!
       %a
-    ?>  ?=(%woot +<.sih)
+    ?.  ?=(%woot +<.sih)
+      ~&  [%gall-bad-gasp-a pax=pax lgsih=+<.sih]
+      ~&  [%gall-bad-gasp-b pax=pax sih=sih]  `..^$
     :_  ..^$  :_  ~
     ?~  q.sih
       [hen %give %nice ~]
@@ -464,7 +466,6 @@
             %dumb  !!
             %gone  !!
             %init  !!
-            %logo  !!
             %logo  !!
             %mean  [%pass [%r pax] (rod %e p.+.sih)]
             %nice  [%give %nice ~]
