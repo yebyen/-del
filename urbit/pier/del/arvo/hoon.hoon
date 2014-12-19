@@ -8578,21 +8578,23 @@
     ++  hog                                             ::  tag head
       %+  cook
         |=  $:  a=twig
-                b=(unit ,@tas)
-                c=(unit ,@tas)
-                d=(unit twig)
-                e=(list twig)
+                b=(list ,[@tas @tas])
+                c=$|(~ [p=@tas q=twig])
+                d=(list twig)
             ==
         ^-  [twig (list twig)]
-        =.  e  ?~(b e [[[%dtzz %tas %class] [%smdq (trip u.b)]] e])
-        =.  e  ?~(c e [[[%dtzz %tas %id] [%smdq (trip u.c)]] e])
-        =.  e  ?~(d e [[[%dtzz %tas %href] u.d] e])
-        [a e]
+        =-  [a (welp - ?~(c d [[[%dtzz %tas p.c] q.c] d]))]
+        =-  (~(tap by -))
+        %.  |=(e=(list tank) [%smdq ~(ram re %rose [" " `~] e)])
+        =<  ~(run by f:(reel b .))
+        |=  [e=[p=term q=term] f=(jar twig tank)]
+        (~(add ja f) [[%dtzz %tas p.e] [%leaf (trip q.e)]])
       ;~  plug
         fry
-        ;~(pose (stag ~ ;~(pfix dot sym)) (easy ~))
-        ;~(pose (stag ~ ;~(pfix hax sym)) (easy ~))
-        ;~(pose (stag ~ ;~(pfix fas (stag %smdq soil))) (easy ~))
+        =-  (star ;~(plug - sym))
+        ;~(pose (cold %class dot) (cold %id hax))
+        =-  ;~(pose ;~(plug - (stag %smdq soil)) (easy ~))
+        ;~(pose (cold %href fas) (cold %src pat))
         ;~  pose
           %+  ifix  [pel per]
           %+  more  ;~(plug com ace)
@@ -9601,6 +9603,7 @@
 ::::::  ::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::::::  ::::::    volume 3, Arvo models and skeleton    ::::::
 ::::::  ::::::::::::::::::::::::::::::::::::::::::::::::::::::
+!:
 ~%  %arvo  +  ~
 |%
 ++  arch  ,[p=@uvI q=(unit ,@uvI) r=(map ,@ta ,~)]      ::  fundamental node
@@ -9708,7 +9711,7 @@
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                section 3bE, Arvo core                ::
 ::
-++  vent  !:                                            ::  vane core 
+++  vent                                                ::  vane core
   |=  [lal=@tas vil=vile bud=vase ves=vase]
   ~%  %vent  +>+  ~
   |%
@@ -10005,7 +10008,10 @@
     ::
         %give
       ?>  ?=(^ q.gum)
-      ?>  ?=(^ i.q.gum)
+      ?.  ?=(^ i.q.gum)
+        ~&  [%jack-bad-duct q.gum]
+        ~&  [%jack-bad-card +>-.p.r.gum]
+        !!
       ~?  &(!lac |(!=(%blit +>-.p.r.gum) !=(%d p.gum)))
         [%give p.gum (,@tas +>-.p.r.gum) `duct`q.gum]
       [i.i.q.gum [~ t.i.q.gum] t.q.gum p.r.gum]
