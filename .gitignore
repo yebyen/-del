@@ -37,4 +37,5 @@ urbit/.gitignore
 urbit/.travis.yml
 urbit/pier/.urb
 urbit/pier/.vere.lock
+urbit/pier/del/.vere.lock
 .dockerinit
