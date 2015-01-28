@@ -4,11 +4,14 @@
   $%  [%went p=ship q=cape]
       [%init p=@p]
   ==  ==  ==
-++  began-args  ,[his=@p tic=@p eny=@t ges=gens]
+++  began-args  ,[his=@p tic=@p eny=@t ges=gens ~]
 --
 ::
 !:
+::::
+  ::
 |_  [hid=hide %0 ust=bone his=@p mac=mace]
+++  peer  ,_`.
 ++  poke-began-args
   |=  [ost=bone you=ship began-args]
   =+  bur=(shax :(mix (jam ges) eny))
@@ -42,8 +45,4 @@
     %went  ~
   ==
 ::
-++  peer
-  |=
-    *
-  `+>
 --

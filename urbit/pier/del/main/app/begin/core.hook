@@ -17,14 +17,17 @@
 --
 ::
 !:
+::::
+  ::
 |_  [hid=hide sat=state form]
+++  peer  ,_`.
 ++  done
   |=  ost=bone
   :_  +>.$
   :*  :*  ost  %pass  /to-gan  %g  %mess  [our.hid /began]  our.hid
-          %began-args  !>([his tic eny ges])
+          %began-args  !>([his tic eny ges ~])
       ==
-      (spam %rush %prompt "[waiting...]" %text '')
+      (spam %rush %prompt '[waiting...]' %text '')
   ==
 ::
 ++  loon
@@ -380,7 +383,7 @@
   ==
 ::
 ++  poke-begin-args
-  |=  [ost=bone you=ship arg=?(~ [his=ship ~])]
+  |=  [ost=bone you=ship arg=$|(~ [his=ship ~])]
   =^  res  +>.$
     ^-  [[pot=(unit ,[cord prom cord]) tak=(list cord)] _+>.$]
     ?~  arg
@@ -393,8 +396,8 @@
     ==
   %+  welp
     ?~(pot.res ~ (spam %rush %prompt u.pot.res))
-  %-  zing
-  (turn (flop tak.res) |=(a=cord (spam %rush %txt a)))
+  %^  spam  %rush  %tang
+  (turn (flop tak.res) |=(a=cord [%leaf (trip a)]))
 ::
 ++  pour
   |=  [ost=bone pax=path sih=*]
@@ -411,8 +414,8 @@
     :_  +>.$
     %+  welp
       ?~(pot.res ~ (spam %rush %prompt u.pot.res))
-    %-  zing
-    (turn (flop tak.res) |=(a=cord (spam %rush %txt a)))
+    %^  spam  %rush  %tang
+    (turn (flop tak.res) |=(a=cord [%leaf (trip a)]))
   :_  +>.$
   :-  [ost %give +.sih]
   ?+    +<.sih  ~
@@ -430,10 +433,6 @@
     [%leaf "begin failed"]
   ==
 
-++  peer
-  |=
-    *
-  `+>
 ::
 ++  spam
   |*  git=*
