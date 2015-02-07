@@ -1704,12 +1704,9 @@
         =+  neh=(claw p.p.bon)
         ?>  ?=(^ neh)
         ?:  ?=(%e ven)
-          ?+  cak  !!                 ::  XX  fix eyre
-            %pr  :_  [%sick %waft p.bon r.bon]
-                 [[`path`t.t.t.q.q.bon] hen] 
-            %pc  :_  [%sick %wart p.bon cak `path`t.t.t.q.q.bon r.bon]
-                 [[%e `path`t.t.t.q.q.bon] hen]
-          ==
+          ?>  |(=(%pr cak) =(%pc cak))
+          :_  [%sick %wart p.bon cak `path`t.t.t.q.q.bon r.bon]
+          [[%e `path`t.t.t.q.q.bon] hen]
         =+  ton=[%waft p.bon r.bon]
         ::  ~&  [%milk-waft [[ven `path`t.t.t.q.q.bon] t.neh]]
         :_  [%sick ton]
