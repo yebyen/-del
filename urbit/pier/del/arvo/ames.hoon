@@ -35,31 +35,31 @@
 ++  move  ,[p=duct q=(mold note gift)]                  ::  local move
 ++  note                                                ::  out request $->
           $?  $:  %d                                    ::  to %dill
-                  $%  [%flog p=flog]                    ::
-              ==  ==                                    ::
+          $%  [%flog p=flog]                            ::
+          ==  ==                                        ::
               $:  %a                                    ::  to %ames
-                  $%  [%kick p=@da]                     ::
-              ==  ==                                    ::
+          $%  [%kick p=@da]                             ::
+          ==  ==                                        ::
               $:  %g                                    ::  to %gall
-                  $%  [%rote p=sack q=path r=*]         ::
-                      [%roth p=sack q=path r=*]         ::
-                      [%mess p=[@p %ye ~] q=@p r=cage]  ::
-              ==  ==                                    ::
+          $%  [%rote p=sack q=path r=*]                 ::
+              [%roth p=sack q=path r=*]                 ::
+              [%mess p=[@p %ye ~] q=@p r=cage]          ::
+          ==  ==                                        ::
               $:  @tas                                  ::  to any
-                  $%  [%init p=@p]                      ::
-                      [%want p=sock q=path r=*]         ::
-                      [%wart p=sock q=@tas r=path s=*]  ::
+          $%  [%init p=@p]                              ::
+              [%want p=sock q=path r=*]                 ::
+              [%wart p=sock q=@tas r=path s=*]          ::
           ==  ==  ==                                    ::
 ++  sign                                                ::  in result $<-
           $?  $:  %a                                    ::  from %ames
-                  $%  [%went p=ship q=cape]             ::
-              ==  ==                                    ::
+          $%  [%went p=ship q=cape]                     ::
+          ==  ==                                        ::
               $:  %g                                    ::  from %gall
-                  $%  [%mean p=ares]                    ::
-                      [%nice ~]                         ::
-              ==  ==                                    ::
+          $%  [%mean p=ares]                            ::
+              [%nice ~]                                 ::
+          ==  ==                                        ::
               $:  @tas                                  ::
-                  $%  [%crud p=@tas q=(list tank)]      ::  by any
+          $%  [%crud p=@tas q=(list tank)]              ::  by any
           ==  ==  ==                                    ::
 --
   ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -1662,7 +1662,6 @@
     ?-    -.bon
         %beer
       :_  fox(zac (~(put by zac.fox) p.bon `corn`[hen ~ ~ ~]))
-      ::  ~&  [%ames-clop p.bon hen]
       :*  [hen [%slip %c %init p.bon]]
           [hen [%give %init p.bon]]
           [hen [%slip %a %kick now]]
@@ -1688,6 +1687,8 @@
         %milk
       ::  ~&  [%rx p.bon q.bon]
       ?>  ?=([@ *] q.q.bon)
+      ?:  ?=(%e i.q.q.bon)
+        :_(fox [hen [%slip %e %wart p.bon %$ t.q.q.bon r.bon]]~)
       ?:  ?=(%r i.q.q.bon)
         ?:  ?=([%ta *] t.q.q.bon)
           =+  wil=((hard (unit will)) r.bon)
@@ -1696,7 +1697,7 @@
               :+  (scot %p p.p.bon)
                 (scot %p q.p.bon)
               q.q.bon
-          [hen %pass pax %g %rote p.bon /began 0 %m %will wil]~
+          [hen %pass pax %g %rote p.bon /helm 0 %m %will wil]~
         ?>  ?=([@ @ *] t.q.q.bon)
         :_  fox
         =+  [cak=i.t.q.q.bon ven=i.t.t.q.q.bon]
