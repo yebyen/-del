@@ -3,7 +3,7 @@ boot
 cte
 dev
 etc
-home
+/home
 lib
 media
 mnt
