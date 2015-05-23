@@ -1,11 +1,12 @@
 ::
-::::  /hook/gate/mass/hood/cat
+::::  /hook/gate/reload/helm/cat
   ::
 /?  314
 ::
 ::::
   !:
 |=  $:  [now=@da eny=@uvI bec=beak]
-        [arg=~ ~]
+        [~ ~]
     ==
-[%hood-mass ~]
+:-  %helm-mass
+~

@@ -435,7 +435,7 @@ a {
 }
 .type.public:before {
   content: "▒";
-  line-height: 1.1rem;
+  line-height: 0.8rem;
 }
 .mess,
 .iden,
@@ -461,7 +461,6 @@ a {
 }
 .attr .iden {
   margin-left: 0.3rem;
-  line-hieght: 1.4rem;
 }
 .audi,
 .station .path {
