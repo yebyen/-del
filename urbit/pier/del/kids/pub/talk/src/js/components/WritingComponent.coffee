@@ -33,6 +33,7 @@ module.exports = recl
       StationActions.setTyping @state.station,state
 
   _blur: -> 
+    @$writing.text @$writing.text()
     MessageActions.setTyping false
     @typing false
 
@@ -43,11 +44,10 @@ module.exports = recl
   addCC: (audi) ->
     listening = @state.config[window.util.mainStation(window.urb.user)].sources
     cc = false
-    for s in listening
-      if audi.indexOf(s) is -1
+    for s in audi
+      if listening.indexOf(s) is -1
         cc = true
-    if listening.length is 0
-      cc = true
+    if listening.length is 0 then cc = true
     if cc is true
       audi.push window.util.mainStationPath(window.urb.user)
     audi
@@ -78,12 +78,21 @@ module.exports = recl
   _writingKeyUp: (e) ->
     if not window.urb.util.isURL @$writing.text()
       @$length.toggleClass('valid-false',(@$writing.text().length > 62))
+    # r = window.getSelection().getRangeAt(0).cloneRange()
+    # @$writing.text @$writing.text()
+    # setTimeout => 
+    #     s = window.getSelection()
+    #     s.removeAllRanges()
+    #     s.addRange r
+    #     console.log r
+    #   ,0
 
   _writingKeyDown: (e) ->
     if e.keyCode is 13
       txt = @$writing.text()
       e.preventDefault()
-      if (txt.length > 0 and txt.length < 63) or window.urb.util.isURL @$writing.text()
+      if ( (txt.length > 0 and txt.length < 63) or
+           window.urb.util.isURL @$writing.text() )
         @sendMessage()
       return false
     @_input()
